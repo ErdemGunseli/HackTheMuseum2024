@@ -135,6 +135,10 @@ def add_message(new_message: dict, message_limit=10):
 def record_audio(file_path="audio/audio.wav", duration=5, sample_rate=44100, channels=1, chunk_size=1024) -> str:
     p = pyaudio.PyAudio()
 
+    # Ensuring the directory of the specified file path exists:
+    dir_name = os.path.dirname(file_path)
+    if dir_name and not os.path.exists(dir_name): os.makedirs(dir_name, exist_ok=True)
+    
     # Opening a new stream for recording:
     stream = p.open(format=pyaudio.paInt16, channels=channels, rate=sample_rate, input=True, frames_per_buffer=chunk_size)
 
@@ -144,7 +148,7 @@ def record_audio(file_path="audio/audio.wav", duration=5, sample_rate=44100, cha
     for _ in range(0, int(sample_rate / chunk_size * duration)):
         data = stream.read(chunk_size)
         frames.append(data)
-
+    
     print("Finished recording.")
 
     # Stopping and closing the stream:
@@ -165,14 +169,14 @@ def record_audio(file_path="audio/audio.wav", duration=5, sample_rate=44100, cha
 def play_audio(encoded_audio):
     print("Playing audio...")
 
-    # Decoding the base64 audio string:
+    # Decoding the base64 string:
     audio_bytes = base64.b64decode(encoded_audio)
     
     # Saving the audio to a file:
     with open("output.wav", "wb") as f:
         f.write(audio_bytes)
     
-    # Loading the audio file:
+    # Loading the audio file
     audio = AudioSegment.from_file("output.wav")
     
     # Playing the audio:
