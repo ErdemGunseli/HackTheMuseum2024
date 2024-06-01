@@ -1,4 +1,4 @@
-If, for some reason, you would like to run the code in your environment, follow these steps:
+If you would like to run the code in your environment, follow these steps:
 
 1) Install requirements.txt for FastAPI, and libraries listed in project.properties for Particle.
 
