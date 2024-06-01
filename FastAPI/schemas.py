@@ -1,6 +1,9 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-# Message request just contains audio file
+
+class MessageRequest(BaseModel):
+    exhibit_info: str = Field(max_length=10000)
+    
 
 class MessageResponse(BaseModel):
     text: str

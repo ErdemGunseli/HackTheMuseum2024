@@ -1,0 +1,19 @@
+{
+    "particle.targetDevice": "0a10aced202194944a053de0",
+    "particle.firmwareVersion": "5.8.0",
+    "particle.targetPlatform": "p2",
+    "extensions.ignoreRecommendations": true,
+    "C_Cpp.default.configurationProvider": "particle.particle-vscode-core",
+    "files.associations": {
+        "*.ino": "cpp"
+    },
+    "configurations": [
+        {
+            "name": "Libraries",
+            "includePath": [
+                "${workspaceFolder}/lib/**",
+                "${default}"
+            ]
+        }
+    ]   
+}

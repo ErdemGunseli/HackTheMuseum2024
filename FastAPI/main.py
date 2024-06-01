@@ -13,7 +13,7 @@ app = FastAPI()
 
 from routers import messages
 
-# Declaring routers (sub-applications) that are a part of the app:
+# Declaring the routers (sub-applications that are a part of the app):
 app.include_router(messages.router)
 
 
@@ -27,17 +27,6 @@ origins = read_config("cors_origins")
 # '*' indicates all HTTP methods and headers are allowed.
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, 
                    allow_methods=['*'], allow_headers=['*'])
-
-
-"""
-TODO: IMPLEMENT IF THERE IS TIME:
-INFO ABOUT THE EXHIBITS IN DB
-
-DB with client (museum) - registration from PGadmin4
-Auth endpoint automatically triggered?
-
-"""
-
 
 """
 cd FastAPI
